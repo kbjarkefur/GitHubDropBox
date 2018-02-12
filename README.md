@@ -1,57 +1,58 @@
 # Tutorial on how to combine GitHub and DropBox
 
-## Introduction
+### Introduction
 
 For good or for bad, in research we often want to use both DropBox and GitHub. Usually the DropBox folder include many folders in addition to the data folder - the folder with files relevant to GitHub. The other folders have files like budget excel sheets, concept notes, contracts with survey firms etc.
 
 The reason this is an issue is that both DropBox and GitHub are services that syncs files, although in very different ways. If one person makes an edit in a file synced both by DropBox and GitHub, then DropBox will sync that file immediately, and GitHub Desktop on any other user's computer will think that this edit was done by that user as well, and all project team members are suggested by their GitHub Desktop to commit and sync this edit regardless of which user actually made the edit. This will lead to a lot of conflicts in the repository. While conflicts can be solved, an even bigger issue is that two users cannot work on different branches at the same time if the folder is shared using both DropBox and GitHub, since if one user change branch, then DropBox will change the folder to that branch for all users.
 
-The simplest solution from a strict technical perspective would be to keep the data work folder separate from the DropBox folder. This tutorial will suggest something different since while it would be simple from a technical perspective, it is probably a solution that will be confusing to many project members, especially those not familiar with GitHub.
+##### Simplest but often not most preferred solution
+The simplest solution from a strict technical perspective would be to keep the data work folder separate from the DropBox folder. This tutorial will suggest something different since while it would be simple from a technical perspective, it is probably a solution that will be confusing to many project members, especially those not familiar with GitHub. So while technically simple, most project team wants all files related to the project in one folder.
 
-In the solution described in this tutorial, the data folder will be both in the DropBox and in a separate non-synced folder. Only project team members working with the code to be synced on GitHub need to have the data folder also in a non-synced folder. In the non-synced folder you clone a copy of the repository using GitHub Desktop. In this clone you work with the code, make commits, and push those commits to the cloud just like normal.
+##### Combining GitHub and DropBox in the same folder
+This is the solution described in this tutorial. The repository folder with all data work will be in the DropBox folder, **and** for each team member using GitHub the data work folder will **also** be in a separate non-synced folder. In the non-synced folder you clone a copy of the repository using GitHub Desktop. In this clone you work with the code, make commits, and push those commits to the cloud just like normal.
 
-In the data folder in the DropBox folder you create a second clone of the repository, but do not create the second clone using GitHub Desktop. You should only have one clone in GitHub Desktop for each repository you are working on. Instead you should manually create and manage the clone in the DropBox folder using the console. This is what this tutorial will explain how to do.
+In the data folder in the DropBox folder you create a second clone of the repository manually using the command line. You can not use GitHub Desktop to create a second clone on your computer. We understand that using GitHub from the command line might be intimidating for some people in our field, but that is what this tutorial will carefully and in much detail explain how to do.
 
-The clone in the DropBox folder should only be used to download new changes to the repository in the cloud to the DropBox folder. While it is technically possible to make edits to the code in the DropBox folder and commit and push those edits the cloud, we recommend a work flow where this is not done. We will still explain how to do that below in case someone not familiar with the work flow makes changes in the DropBox folder and you would like to include those edits in the repository.
+If possible, it should be avoided that anyone makes edits to the files in the clone in the DropBox folder as committing edits from a clone in a shared folder is prone to conflicts. It is by all means possible, but our experience is that that work flow should be avoided and all commits to the repository should come from the non-synced clones and then be downloaded the clone in the DropBox folder. We will still explain how to do that below in case someone not familiar with the work flow makes changes in the DropBox folder and you would like to include those edits in the repository.
 
-## Warnings
+### Warnings
 
 This section list warnings or drawbacks of this solution. In most cases these warnings do not matter, but please read them before implementing this solution.
 
-1. It will be possible to re-create all branches and all history of all branches of the repository using information stored in the .git folder (usually hidden) that is created when you create the clone. So anyone who has access to the DropBox folder with the clone will have access to the whole history of the repository, not just the files that is currently shown in the DropBox folder. It is not straightforward to access this information (but perfectly possible), and in most projects all members are allowed access to both the DropBox folder and the GitHub repository, so it usually not an issue, but keep this in mind when publishing your work.
-1. Binary files (images, pdf, all Microsoft office files etc.) whose history is inefficiently stored by GitHub risk making the DropBox folder very large if those files are edited frequently. This could slow down the sync, especially on a slow connection. The solution to this is to not save binary files in the repository -- more on that below.
+* It will be possible to re-create all branches and all history of all branches of the repository using information stored in the .git folder (usually hidden) that is created when you create the clone. So anyone who has access to the DropBox folder with the clone will have access to the whole history of the repository, not just the files that is currently shown in the DropBox folder. It is not straightforward how to access this information (but perfectly possible), and in most projects all members allowed access to the DropBox folder also have access to the GitHub repository, so it usually not an issue, but keep this in mind when publishing your work.
 
-## Requirements
+* Binary files (images, pdf, all Microsoft office files etc.) whose history is inefficiently stored by GitHub risk making the DropBox folder very large if those files are edited frequently. This could slow down the sync, especially on a slow connection. The solution to this is to not save binary files in the repository -- more on that below.
 
-This method requires that you use a console (the default console in Windows is called the _Command Prompt_ and _Terminal_ on a Mac). We understand that many people in econ research are not fully comfortable using the console, but the steps needed are not that many and we will explain them in detail.
+### Requirements
 
-Unless you are already experienced in using the console and have your own favorite console, we recommend that you use Git Bash instead of any of the default consoles mentioned above. If you use any other console than Git Bash you will have to install _git_ in that console. Git Bash comes with _git_ that we will need and that's why we recommend it. Each time we say Git Bash in this tutorial you could technically use any console of your choice.
+This method requires that you use the command line (the default command line interface in Windows is called the _Command Prompt_ and it is called _Terminal_ on a Mac). We understand that many people in econ research may not have a lot of experience using the command line, but we will explain all steps needed in detail.
 
-You can download Git Bash [here](https://git-scm.com/downloads). Either follow the instructions in the installer, or google instructions on which options to choose (We should write our own instructions eventually)
+Unless you are already experienced in using the command line and have your own favorite console, we recommend that you use Git Bash instead of any of the default command line mentioned above. If you use any other command line than Git Bash you will have to install _git_ in that console. Git Bash comes with _git_ that we will need and that's why we recommend it. Each time we say Git Bash in this tutorial you could technically use any command line interface of your choice.
 
-To check that your console is correctly set up for what we will do in this tutorial, enter `git --version` in your console and if you get an output on any of the formats you are good to go!
+You can download Git Bash [here](https://git-scm.com/downloads). Follow the instructions in the installer and accept the default values of all the options. If you run in to any problems when installing Git Bash, Google the error code and you are likely to find a response. Please open up an issue to this repository if you find some instructions that you think others will benefit from and that you are willing to share. You can also fork this repository and submit a pull-request with those instructions.
+
+To check that _git_ is properly installed in the command line inteface you intend to use is correctly set up for what we will do in this tutorial, enter `git --version` in your console and if you get an output on any of the formats you are good to go!
 
 ```
 git version 2.14.2.windows.2
-//Add more outputs from Mac, Linux, non-gitbash consoles etc. here
 ```
-
-If you get the answer `bash: git: command not found` your installation of _git_ is not done correctly.
+If you are using a Mac or a Linux computer you result will look different but more or less similar. If you get the answer `bash: git: command not found` your installation of _git_ was not successful.
 
 ##### Advice using Git bash
+* You change folder in the command line using the command `cd`. For example, `cd "C:\Program Files"` changes the working directory to the folder _C:\Program Files_.
+* Git Bash uses both relative and absolute file paths. That means if you are already in folder `"C:/Users/Researcher"` and want to do to `"C:/Users/Researcher/DropBox"` you can either type the full file path `cd "C:/Users/Researcher/DropBox"` or just the relative file path `cd "DropBox"` as you are already in the `Researcher` folder, and you only need to enter the file path relative to the folder that you are in. Relative file paths are important as Git Bash almost only use relative file paths in its output.
 * Git Bash requires you to use forward slashes. So `"/Dropbox/ProjectFolder/RepositoryName"` works but `"\Dropbox\ProjectFolder\RepositoryName"` does not.
-* File paths must be enclosed in quotation marks if there is a space in any of the folders or file names.
+* File paths must be enclosed in quotation marks if there is a space in any of the folders or file names. It is good practice to always do so.
 * To paste something in Git Bash, use `ctrl+shift` instead of `ctrl+C`. You can also right click.
-* the `~` is a short hand for your user folder on your computer. As in `"C:/Users/Researcher"`
-* Git Bash uses both relative and absolute file paths. Taht means if you are already in folder `"C:/Users/Researcher"` and want to do to `"C:/Users/Researcher/DropBox"` you can either type the full file path `cd "C:/Users/Researcher/DropBox"` or just the relative file path `cd "DropBox"` as you are already in the `Researcher` folder, and you only need to enter the file path relative to the folder that you are in. Relative file paths are important as Git Bash almost only use relative file paths in its output.
+* the `~` is a short hand for your user folder on your computer. As in `"C:/Users/Researcher"` in Windows or `"/Users/Researcher"` on a Mac where _Researcher_ in both cases is replaced with the user name on your computer. Test this by typing `cd ~` which change your working directory to the user folder, and afterwards type `pwd` to display your user folder.
 
-# Initial Setup
-
+## Initial Setup
 After you have your console working and have _git_ installed on it (see the [requirements](#requirements) section above if you have note done this), you can start following these steps to set up your non-synced repository clone and your DropBox Folder Clone.
 
 This part you only need to do once for each project. Skip to [update DropBox](#update-dropbox) if you have already cloned your repository in the DropBox folder and you only want to update the clone from the version of the repository in the cloud at GitHub.com
 
-## Set up GitHub Repo and DropBox folder
+### Set up GitHub Repo and DropBox folder
 
 This section asks you to set up a GitHub repository and a DropBox folder in a completely normal way. The only important part is that you do not clone your repository to anywhere in the DropBox folder yet. Clone it using GitHub Desktop to a non-synced folder.
 
@@ -65,7 +66,7 @@ This section asks you to set up a GitHub repository and a DropBox folder in a co
   1. Create a folder in your DropBox
   1. Invite your collaborators to the DropBox folder
 
-## Create a second local clone in DropBox Folder
+### Create a second local clone in DropBox Folder
 
 When you cloned the repo above to a non-synced folder you did so using GitHub Desktop. In the next step we are creating a second and independent clone of the repo in the DropBox folder, and we will have to do this with the console.
 
@@ -113,7 +114,7 @@ Unpacking objects: 100% (42/42), done.
 
 See how `git clone` created a new folder, with all the content of the repository in it. You now have a second clone on your computer in your DropBox to which you can download updates to the repository directly from the cloud (see next section) so that team members that use only DropBox and not GitHub, can still navigate the code. Remember that the recommended work flow is to never work on the code directly in the DropBox folder. Always use your other local clone, push updates to the cloud and then pull the new edits to the DropBox folder as described in the next section. This means that everyone that work on the code should be using GitHub.
 
-# Update DropBox
+## Update DropBox
 Make sure that you or someone in your team have already done the steps in the [initial setup](#initial-setup) before doing this step.
 
 Each time you want to update the DropBox folder, start by navigating to the folder in Git Bash. Note that we are not navigating into the same folder as when we cloned the repository. We want to be in the folder created when we cloned the repository.
@@ -155,16 +156,16 @@ Please commit your changes or stash them before you switch branches.
 Aborting
 ```
 
-# Best Practices
+## Best Practices
 
-## Store data in DropBox
+### Store data in DropBox
 Store data in the DropBox Folder and not in the the non-synced folder and not in the cloud.
 
-# Solutions to special scenarios
+## Solutions to special scenarios
 
 This section helps you with solutions to errors using the console, and to when team members did not follow the work flow this set up require.
 
-## Manual edits to the code in the DropBox folders
+### Manual edits to the code in the DropBox folders
 While the intended work flow is that edits to the code should only be done in the non-synced folder and pushed to the DropBox folder through the GitHub cloud, it is easy to imagine that it could happen some time. To test whether there has been any edits been done in the DropBox folder to the code, you can type `git status` in Git Bash.
 
 If there are no edits made to the code you will get an output similar to the output below.  The important part is that it is saying _**nothing to commit**_.
@@ -192,7 +193,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 Which solution you want depends on what you want to do and is described in the following sections.
 
-### Discard all edits in the DropBox folder
+#### Discard all edits in the DropBox folder
 This can be done if you accidentally made a few changes here, and prefer to do manually transfer the edits to the non-synced clone instead, and add them to GitHub using the intended work flow. This will also be the desired solution if the edits was a complete mistake
 
 ```
@@ -200,7 +201,7 @@ git checkout -- <file path and name>
 ```
 Test `git status` again to make sure that there are no more unresolved edits in the DropBox folder.
 
-### Commit edits in the DropBox folder
+#### Commit edits in the DropBox folder
 This should be done if you want to keep the edits done, and it is unfeasible or impractical to manually transfer the edits to the non-synced folder and commit them from there, which is the preferable solution, see above.
 
 To commit an edit from the console to the repository in the cloud, you should start by telling Git Bash you want to commit these changes. You do that with the following code that should be repeated for each file you want to commit. You can use wild cards in file names to include multiple files, i.e. write `file*.do` to include both `file1.do` and `file2.do` from that folder. Note that you should only add the files you want to include in the same commit here. The GitHub Desktop equivalence to this step is to tick/untick files in the list of changed files. IF you want to split up the edits in multiple commits, then do the next step before adding more files.
@@ -234,18 +235,17 @@ To https://github.com/kbjarkefur/DropBoxGitHub.git
 
 Test `git status` again to make sure that there are no more unresolved edits in the DropBox folder.
 
-## Cloning someone else's repository
+### Cloning someone else's repository
 You can always clone someone else's repository if you can see it on GitHub.com. This includes all public repositories and private repositories where you have been added as a collaborator. You can clone these using both Git Bash or GitHub Desktop, and you can use either of those tools to keep pulling updates made to those repositories.
 
 However, you can only push to them if you have been added as a collaborator and have been given writing privileges. Not that you may have writing privileges but the branch you are trying to push to might be locked for edits so that only the owner can edit that branch. You can sill go through all steps of adding and committing files, but when you try to push to the cloud you will get an error.
 
 If you have made changes in your local clone that you do not have write privileges, but you still want your edits to be included, here are some suggested solutions.
 
-### Be added as a collaborator to the repository
+#### Be added as a collaborator to the repository
 If you know the owner of the repository, the by far easiest solution is to ask the owner if you can be added as a collaborator to the repository.
 
-### If you can't be added as a collaborator, fork the repository
+#### If you can't be added as a collaborator, fork the repository
 Your best option if you cannot be added as a collaborator but still want to submit your edits to the original repository is to create a fork. Start by forking the original repository on GitHub.com. Since you created this fork and are the owner of the fork, you will have writing privileges to it. While you now have writing privileges to your fork, your local clone still points towards the original repository. The easiest solution is to create second local clone, transfer the changes that you did in the first clone to the second clone and push from there to your clone. When you have pushed your changes to your fork, then you can create a pull request to the original repository suggesting the edits that you did.
 
 There are complicated and technical solutions to how you can change your local clone be associated with your fork and not the original repository so you do not need to manually transfer your changes, but that is outside of the scope of this tutorial.
-
