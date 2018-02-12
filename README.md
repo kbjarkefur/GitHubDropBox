@@ -47,46 +47,46 @@ If you are using a Mac or a Linux computer you result will look different but mo
 * To paste something in Git Bash, use `ctrl+shift` instead of `ctrl+C`. You can also right click.
 * the `~` is a short hand for your user folder on your computer. As in `"C:/Users/Researcher"` in Windows or `"/Users/Researcher"` on a Mac where _Researcher_ in both cases is replaced with the user name on your computer. Test this by typing `cd ~` which change your working directory to the user folder, and afterwards type `pwd` to display your user folder.
 
-## Initial Setup
+# Initial Setup
 After you have your console working and have _git_ installed on it (see the [requirements](#requirements) section above if you have note done this), you can start following these steps to set up your non-synced repository clone and your DropBox Folder Clone.
 
-This part you only need to do once for each project. Skip to [update DropBox](#update-dropbox) if you have already cloned your repository in the DropBox folder and you only want to update the clone from the version of the repository in the cloud at GitHub.com
+This part you only need to do once for each project. Skip to [update DropBox](#update-dropbox-clone) if you have already cloned your repository in the DropBox folder and you only want to download new changes made in or committed to the repository at GitHub.com.
 
 ### Set up GitHub Repo and DropBox folder
-
 This section asks you to set up a GitHub repository and a DropBox folder in a completely normal way. The only important part is that you do not clone your repository to anywhere in the DropBox folder yet. Clone it using GitHub Desktop to a non-synced folder.
 
-##### GitHub Setup
+##### GitHub Setup - Needed to be done once per project
 1. Create a new repository on GitHub.com
-   * In the rest of this tutorial we will assume that the repository was named _DropBoxGitHub_, but you can name it anything. Just change the the name to your name where you see _DropBoxGitHub_.
-   * You can use an already existing repo, but this tutorial starts with a new repository.
-1. Clone this computer to you computer using GitHub Desktop. Do **NOT** clone your repo to a DropBox folder. Clone it to your Documents folder or any other non-synced folder.
+  * You can use an already existing repo, but this tutorial starts with a new repository.
+  * In the rest of this tutorial we will assume that the repository was named _DropBoxGitHub_, but you can name it anything. Just change the name to your name where you see _DropBoxGitHub_.
 1. Use a .gitignore file that ignores everything but code files. Use for example DIME's [.gitignore template](https://github.com/worldbank/DIMEwiki/blob/master/Topics/GitHub/gitignore_template.txt) that is developed to suit what researchers in economics usually needs.
 
-##### DropBox Folder Setup
-1. Create a folder in your DropBox
-1. Invite your collaborators to the DropBox folder
+##### GitHub Clone Setup - Needed to be done once per team member contributing to the code
+Clone the repository to you computer using GitHub Desktop. Do **NOT** clone your repo to a folder in your DropBox folder (this is done later). Clone it to your Documents folder or any other non-synced folder.
+
+##### DropBox Folder Setup - Needed to be done once per project
+1. Create a folder in your DropBox.
+1. Invite your the rest of the project team to the DropBox folder
 
 ### Create a second local clone in DropBox Folder
-
-When you cloned the repo above to a non-synced folder you did so using GitHub Desktop. In the next step we are creating a second and independent clone of the repo in the DropBox folder, and we will have to do this with the console.
+This should only be done once per project. The DropBox clone will be synced by DropBox to all team members sharing the DropBox folder. When the repository was cloned to a non-synced folder above, you did so using GitHub Desktop. In the next steps we will have to use the command line to create a second clone of the repo in the DropBox folder.
 
 ##### Navigate to the DropBox folder for the clone
-Prepare a location for the cloned repository in the DropBox folder you created above. Not that a folder with the same name as the repository will be created where all the content of the repository will be stored. You may rename this folder once it is created.
+Prepare a location for the cloned repository in the DropBox folder you created above. Note that a folder with the same name as the repository will be created where all the content of the repository will be stored. You may rename this folder once it is created.
 
-Open Git Bash and navigate to the DropBox folder you created. Do this using the command _cd_ followed by the file path to where in the DropBox Folder you want to create the Data Folder. Like this:
+Open Git Bash and navigate to the location in tje DropBox folder you prepared. Do this using the command _cd_ followed by the file path to where in the DropBox Folder you want to create the Data Folder. Remember that in Git Bash you must use forward slashes `/`. Like this:
 
 ```
 cd "C:/Users/Researcher/Dropbox/ProjectFolder"
 ```
 
-In most consoles you can see where you currently is navigated. In Git Bash it looks like this. ~ is a short hand to the user folder `"C:/Users/Researcher"` used by Git Bash.
+In most command line interfaces you can see where you currently is navigated. In Git Bash you can see it on the line above where you enter your command. See the example below. Remmber that `~` is a short hand to the user folder `"C:/Users/Researcher"` used by Git Bash.
 
 ```
 username@computername ~/Dropbox/ProjectFolder
 $
 ```
-In the Command Prompt (the default console in windows) it looks like this.
+In the Command Prompt (the default command line in Windows) the current folder is shown on the same line that you enter your command on.
 
 ```
 C:/Users/Researcher/Dropbox/ProjectFolder>
@@ -115,7 +115,7 @@ Unpacking objects: 100% (42/42), done.
 
 See how `git clone` created a new folder, with all the content of the repository in it. You now have a second clone on your computer in your DropBox to which you can download updates to the repository directly from the cloud (see next section) so that team members that use only DropBox and not GitHub, can still navigate the code. Remember that the recommended work flow is to never work on the code directly in the DropBox folder. Always use your other local clone, push updates to the cloud and then pull the new edits to the DropBox folder as described in the next section. This means that everyone that work on the code should be using GitHub.
 
-## Update DropBox
+## Update DropBox Clone
 Make sure that you or someone in your team have already done the steps in the [initial setup](#initial-setup) before doing this step.
 
 Each time you want to update the DropBox folder, start by navigating to the folder in Git Bash. Note that we are not navigating into the same folder as when we cloned the repository. We want to be in the folder created when we cloned the repository.
@@ -129,8 +129,6 @@ git pull
 ```
 
 Note that `git pull` only updates the branch you are currently in. There are tools that pull all branches but they sometimes, but they sometimes do more than what you want, so unless you know them well, pull one branch at the time. And since the intended work flow is to not work on the code in the DropBox folder, it is mostly only the master branch that is needed to be up to date.  See the next section for details on branches.
-
-
 
 ##### Note on branches
 If you do not see the updates that you just pulled into you DropBox Folder, you want to make sure that you are in the right branch of the repository. In Git Bash the current branch is always listed after the current working directory. See example below.
