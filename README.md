@@ -56,15 +56,16 @@ This part you only need to do once for each project. Skip to [update DropBox](#u
 
 This section asks you to set up a GitHub repository and a DropBox folder in a completely normal way. The only important part is that you do not clone your repository to anywhere in the DropBox folder yet. Clone it using GitHub Desktop to a non-synced folder.
 
-* GitHub Setup
-  1. Create a new repository on GitHub.com
-    * In the rest of this tutorial we will assume that the repository was named _DropBoxGitHub_, but you can name it anything. Just change the the name to your name where you see _DropBoxGitHub_.
-    * You can use an already existing repo, but this tutorial starts with a new repository.
-  1. Clone this computer to you computer using GitHub Desktop. Do **NOT** clone your repo to a DropBox folder. Clone it to your Documents folder or any other non-synced folder.
-  1. Use a .gitignore file that ignores everything but code files. Use for example DIME's [.gitignore template](https://github.com/worldbank/DIMEwiki/blob/master/Topics/GitHub/gitignore_template.txt) that is developed to suit what researchers in economics usually needs.
-* DropBox Folder Setup
-  1. Create a folder in your DropBox
-  1. Invite your collaborators to the DropBox folder
+##### GitHub Setup
+1. Create a new repository on GitHub.com
+  * In the rest of this tutorial we will assume that the repository was named _DropBoxGitHub_, but you can name it anything. Just change the the name to your name where you see _DropBoxGitHub_.
+  * You can use an already existing repo, but this tutorial starts with a new repository.
+1. Clone this computer to you computer using GitHub Desktop. Do **NOT** clone your repo to a DropBox folder. Clone it to your Documents folder or any other non-synced folder.
+1. Use a .gitignore file that ignores everything but code files. Use for example DIME's [.gitignore template](https://github.com/worldbank/DIMEwiki/blob/master/Topics/GitHub/gitignore_template.txt) that is developed to suit what researchers in economics usually needs.
+
+##### DropBox Folder Setup
+1. Create a folder in your DropBox
+1. Invite your collaborators to the DropBox folder
 
 ### Create a second local clone in DropBox Folder
 
