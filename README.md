@@ -1,5 +1,8 @@
 # Tutorial on how to combine GitHub and DropBox
 
+#### Contributions to the tutorial is very welcomed!
+We greatly appreciate any type of feedback or contribution to this repository. Either open an [issue](https://github.com/kbjarkefur/GitHubDropBox/issues) if you have a comment/suggestion/bug you want to draw our attention to, or create a fork and submit a pull request if you want to edit language, improve how something is explained, or add to the common issue solution or best practices in the _Resources_ folder. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+
 ### Introduction
 
 For good or for bad, in research we often want to use both DropBox and GitHub. Usually the DropBox folder include many folders in addition to the data folder - the folder with files relevant to GitHub. The other folders have files like budget excel sheets, concept notes, contracts with survey firms etc.
