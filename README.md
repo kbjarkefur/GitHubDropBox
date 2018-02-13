@@ -47,7 +47,7 @@ If you are using a Mac or a Linux computer you result will look different but mo
 * Git Bash uses both relative and absolute file paths. That means if you are already in folder `"C:/Users/Researcher"` and want to do to `"C:/Users/Researcher/DropBox"` you can either type the full file path `cd "C:/Users/Researcher/DropBox"` or just the relative file path `cd "DropBox"` as you are already in the `Researcher` folder, and you only need to enter the file path relative to the folder that you are in. Relative file paths are important as Git Bash almost only use relative file paths in its output.
 * Git Bash requires you to use forward slashes. So `"/Dropbox/ProjectFolder/RepositoryName"` works but `"\Dropbox\ProjectFolder\RepositoryName"` does not.
 * File paths must be enclosed in quotation marks if there is a space in any of the folders or file names. It is good practice to always do so.
-* To paste something in Git Bash, use `ctrl+shift` instead of `ctrl+C`. You can also right click.
+* To paste something in Git Bash, use `shift+insert` instead of `ctrl+C`. You can also right click.
 * the `~` is a short hand for your user folder on your computer. As in `"C:/Users/Researcher"` in Windows or `"/Users/Researcher"` on a Mac where _Researcher_ in both cases is replaced with the user name on your computer. Test this by typing `cd ~` which change your working directory to the user folder, and afterwards type `pwd` to display your user folder.
 
 # Initial Setup
