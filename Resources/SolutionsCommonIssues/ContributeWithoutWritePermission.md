@@ -1,5 +1,5 @@
-# Cloning someone else's repository
-You can always clone someone else's repository if you can see it on GitHub.com. This includes all public repositories and private repositories where you have been added as a collaborator. You can clone these using both Git Bash or GitHub Desktop, and you can use either of those tools to keep pulling updates made to those repositories.
+# Contributing to someone else's repository
+You can always clone someone else's repository if you can see it on GitHub.com, so you could end up in the situation where you have a clone of someone else's repository that you have made contributions to that you would like to share. You can clone these repositories using both Git Bash or GitHub Desktop, and you can use either of those tools to keep pulling updates made to those repositories, even if you do not have write permissions.
 
 However, you can only push to them if you have been added as a collaborator and have been given writing privileges. Not that you may have writing privileges but the branch you are trying to push to might be locked for edits so that only the owner can edit that branch. You can sill go through all steps of adding and committing files, but when you try to push to the cloud you will get an error.
 
