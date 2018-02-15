@@ -12,11 +12,14 @@ The reason this is an issue is that both DropBox and GitHub are services that sy
 The simplest solution from a strict technical perspective would be to keep the data work repository separated from the DropBox folder. This is usually not an acceptable solution to most research project teams as there will be researchers on the project that does not know GitHub and needs to be able to access the latest version of the data work files.
 
 ##### The solution recommended in this tutorial
-The set-up in this tutorial requires everyone who contributes to the code using GitHub to set up a clone of the repository in a local folder on their computer that is **not** the DropBox folder. One person in the team then follows the instructions in this tutorial and sets up a second local clone in the DropBox folder. DropBox will then sync this clone to everyone who is on that DropBox folder. 
+The set-up in this tutorial requires everyone who contributes to the code using GitHub to set up a clone of the repository in a local folder on their computer that is **not** the DropBox folder. One person in the team then follows the instructions in this tutorial and sets up a second local clone in the DropBox folder. DropBox will then sync this clone to everyone who is on that DropBox folder.
 
 Then team members make commits to their non-synced clone and push them to GitHub.com just like in any other GitHub collaboration. Then, at any time of your choice, you can download any new changes in the repository in GitHub.com to the DropBox clone. Each time new changes are downloaded to the DropBox clone, DropBox share them with everyone in the DropBox folder.
 
 The only catch is that GitHub Desktop can only work with one local clone of each repository at the time, so you will have to use the command line to manage the DropBox clone. We know that not everyone is used to working with the command line but providing easy to follow instructions to that is exactly what this tutorial is all about. We have boiled it down so in addition to navigate folders using the `cd` command, you only need to use one command line command `git clone` when setting up your second clone, and one command line command `git pull` when you download new edits to the repository. And all of this will be explained in great detail.
+
+##### Other Solutions
+Git offers several other ways to do this. We have seen tutorials describing ways to push directly to the DropBox clone from the other clone, use webhooks to automatize some steps, etc., but we recommend the method described in this tutorial as it is the least complicated method that is still relatively easy to set up using the command line.
 
 ### Warnings
 
