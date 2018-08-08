@@ -2,7 +2,7 @@
 
 Sections on this page:
 * [Introduction and motivation](#introduction-and-motivation)
-* [Three degrees of DropBox integration](#Three-degrees-of-DropBox-integration-in-a-Research-Project-hosted-in-GitHub)
+* [Three degrees of DropBox integration](#three-degrees-of-dropbox-integration-in-a-research-project-hosted-in-github)
 * [Other resources in this repository](#other-resources-in-this-repository)
 
 #### Contributions to the tutorial is very welcomed!
