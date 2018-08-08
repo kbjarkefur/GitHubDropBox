@@ -1,5 +1,10 @@
 # Tutorial on how to combine GitHub and DropBox in a Research Project
 
+Sections on this page:
+* [Introduction and motivation](#introduction-and-motivation)
+* [Three degrees of DropBox integration](#Three-degrees-of-DropBox-integration-in-a-Research-Project-hosted-in-GitHub)
+* [Other resources in this repository](#other-resources-in-this-repository)
+
 #### Contributions to the tutorial is very welcomed!
 We greatly appreciate any type of feedback or contribution to this repository. If you only have a quick comment/question etc. or you are not familiar with GitHub, then go to [issues](https://github.com/kbjarkefur/GitHubDropBox/issues). Otherwise, see [CONTRIBUTING](CONTRIBUTING.md) for more details.
 
@@ -8,7 +13,7 @@ GitHub was developed by computer scientists with their use case in mind. There i
 
 The reason why this is not straightforward and needs a tutorial is that both DropBox and GitHub are services that syncs files, although in very different ways. For example, if one person makes an edit in a file synced both by DropBox and GitHub, then DropBox will sync that file immediately, and GitHub Desktop on any other user's computer will think that this edit was done by that user as well, and all users are then asked by their GitHub Desktop to commit and sync this edit regardless of which user actually made the edit. This will lead to a lot of conflicts in the repository. While conflicts can be solved, an even bigger issue is that two users cannot work on different branches at the same time if they work from a repository shared using DropBox, since if one user checkout a different branch, then DropBox will change the files in the folder to that branch for all users.
 
-## Three degrees of DropBox integration in a Research Project hosted in GitHub.
+## Three degrees of DropBox integration in a Research Project hosted in GitHub
 
 ### No DropBox integration
 The data is not shared in the project folder, it is either downloaded by the code or copied into the folder manually by each research member. This is not applicable in many research project. For example, the data needs to be available online for the code to be able to download it, or it is unfeasible to manually add it to the project folder if there are too many data files or if the data files are frequently updated. But if this solution is possible, then this is the solution that is recommended in a project hosted in GitHub.
