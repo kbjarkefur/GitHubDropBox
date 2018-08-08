@@ -1,6 +1,6 @@
 # Tutorial on how to combine GitHub and DropBox in a Research Project
 
-Link to the [Full DropBox integration Tutorial](Resources/Tutorial/tutorial.md)
+Link to the [Full DropBox integration Tutorial](Resources/Tutorial/README.md)
 
 Sections on this page:
 * [Introduction and motivation](#introduction-and-motivation)
@@ -26,7 +26,7 @@ The project folder is split into two folders. One with the code, and one with th
 ### Full DropBox integration
 All files, including code files, are saved in the project folder on DropBox and each project member that will collaborate on the code will have a separate GitHub folder on their computer with only the code. The project members push edits to the code from the GitHub folder to GitHub.com and then those edits can be downloaded to the code in the DropBox folder directly from GitHub.com. While this solution has the benefit that all project files are in the DropBox folder, it comes to the expense that it requires a technical one-time set-up, but that is what this tutorial will help you with.
 
-Click here for the [Full DropBox integration Tutorial](Resources/Tutorial/tutorial.md)
+Click here for the [Full DropBox integration Tutorial](Resources/Tutorial/README.md)
 
 ## Other resources in this repository
 

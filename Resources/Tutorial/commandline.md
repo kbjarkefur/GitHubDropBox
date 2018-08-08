@@ -10,7 +10,7 @@ If you know that you do not have a git command line environment installed on you
 
 ###  Git bash
 
-Search your computer for Git Bash. If git bash is installed you have the git command line environment you need already set up.
+Search your computer for Git Bash. If Git Bash is installed you have the git command line environment you need already set up.
 
 ### Any other command Line
 
