@@ -10,16 +10,16 @@ The reason why this is not straightforward and needs a tutorial is that both Dro
 
 ## Three degrees of DropBox integration in a Research Project hosted in GitHub.
 
-### No DropBox
-The data is not shared in the project folder, it is either downloaded by the code or copied into the folder manually by each research member. This is not applicable in most research project as the data is not publicly available online or there are too many data files to make copying manually feasible.
+### No DropBox integration
+The data is not shared in the project folder, it is either downloaded by the code or copied into the folder manually by each research member. This is not applicable in many research project. For example, the data needs to be available online for the code to be able to download it, or it is unfeasible to manually add it to the project folder if there are too many data files or if the data files are frequently updated. But if this solution is possible, then this is the solution that is recommended in a project hosted in GitHub.
 
-### Half DropBox
-The project folder is split into two folders. One with the code, and one with the data and all other files related to the project. The folder with code is shared over GitHub and the other folder is shared on DropBox. The file paths in the code points to the GitHub folder when referencing a code file and points to the DropBox folder when referencing a data file. While it is not optimal to have the split the files for one project into two separate folders, this is a solution that most researchers with programming experience are able to set up.
+### Half DropBox integration
+The project folder is split into two folders. One with the code, and one with the data and all other files related to the project. The folder with code is shared over GitHub and the other folder is shared on DropBox. The file paths in the code points to the GitHub folder when referencing a code file and points to the DropBox folder when referencing a data file. While it is not optimal to have the split the files for one project into two separate folders, this is a solution that most researchers with programming experience are able to set up. At the end of the project, the code files can obviously be copied to the DropBox folder as well.
 
-### Full DropBox
+### Full DropBox integration
 All files, including code files, are saved in the project folder on DropBox and each project member that will collaborate on the code will have a separate GitHub folder on their computer with only the code. The project members push edits to the code from the GitHub folder to GitHub.com and then those edits can be downloaded to the code in the DropBox folder directly from GitHub.com. While this solution has the benefit that all project files are in the DropBox folder, it comes to the expense that it requires a technical one-time set-up, but that is what this tutorial will help you with.
 
-Click here for the [Full DropBox Tutorial](Resources/Tutorial/tutorial.md)
+Click here for the [Full DropBox integration Tutorial](Resources/Tutorial/tutorial.md)
 
 ## Other resources in this repository
 
