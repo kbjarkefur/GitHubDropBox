@@ -1,5 +1,7 @@
 # Tutorial on how to combine GitHub and DropBox in a Research Project
 
+Link to the [Full DropBox integration Tutorial](Resources/Tutorial/tutorial.md)
+
 Sections on this page:
 * [Introduction and motivation](#introduction-and-motivation)
 * [Three degrees of DropBox integration](#three-degrees-of-dropbox-integration-in-a-research-project-hosted-in-github)
